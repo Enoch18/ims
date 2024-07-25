@@ -46,7 +46,7 @@
                         @endforeach
                     </div>
                     
-                    <div class="ml-5 h-[100dvh] w-[100%] pr-2 overflow-y-scroll">
+                    <div class="ml-2 h-[100dvh] w-[100%] pr-2 pl-2 overflow-y-scroll">
                         @livewire('navigation-menu')
                         
                         {{ $slot }}
