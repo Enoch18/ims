@@ -7,12 +7,15 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Styles -->
@@ -43,7 +46,7 @@
                         @endforeach
                     </div>
                     
-                    <div class="ml-5 h-[100dvh] w-[100%] pr-2">
+                    <div class="ml-5 h-[100dvh] w-[100%] pr-2 overflow-y-scroll">
                         @livewire('navigation-menu')
                         
                         {{ $slot }}

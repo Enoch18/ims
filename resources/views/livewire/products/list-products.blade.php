@@ -1,3 +1,9 @@
 <div>
-    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
+    @php
+        $title = "Our Products"
+    @endphp
+
+    <x-admin.table 
+        :title="$title"
+    />
 </div>
