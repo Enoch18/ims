@@ -18,6 +18,7 @@
         <!-- Styles -->
         @livewireStyles
     </head>
+    
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-white">
             <main>
@@ -25,31 +26,26 @@
                     <div class="bg-gray-700 w-64 h-[100dvh] p-2">
                         @php 
                             $links = [
-                                ['link' => 'Dashboard', 'endpoint' => '/dashboard', 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Inventory', 'endpoint' => '/inventory', 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Orders', 'endpoint' => '/orders', 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Suppliers', 'endpoint' => '/suppliers', 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Locations', 'endpoint' => '/locations', 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Reports', 'endpoint' => '/reports', 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'User Management', 'endpoint' => '/locations', 'icon' => "<i class='fa fa-dashboard'></i>"],
+                                ['link' => 'Dashboard', 'endpoint' => route('dashboard'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                                ['link' => 'Product Management', 'endpoint' => route('products.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                                ['link' => 'Inventory Tracking', 'endpoint' => route('inventory.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                                ['link' => 'Order Management', 'endpoint' => route('order-management.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                                ['link' => 'Suppliers', 'endpoint' => route('suppliers.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                                ['link' => 'Locations', 'endpoint' => route('locations.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                                ['link' => 'Reports', 'endpoint' => route('reports.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                                ['link' => 'User Management', 'endpoint' => route('user-managements.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
                                 ['link' => 'Settings', 'endpoint' => '/settings', 'icon' => "<i class='fa fa-dashboard'></i>"],
                             ]
                         @endphp
 
-                        <x-admin.sidebar-link :links="$links" />
+                        @foreach($links as $link)
+                            <x-admin.sidebar-link :link="$link" />
+                        @endforeach
                     </div>
                     
                     <div class="ml-5 h-[100dvh] w-[100%] pr-2">
-                        <div class="flex flex-row gap-3 pt-3">
-                            <div>
-                                <h1 class="text-2xl">IMS</h1>
-                            </div>
-
-                            <div class="flex flex-row flex-1 ml-10">
-                                <x-admin.search />
-                            </div>
-                        </div>
-
+                        @livewire('navigation-menu')
+                        
                         {{ $slot }}
                     </div>
                 </div>
