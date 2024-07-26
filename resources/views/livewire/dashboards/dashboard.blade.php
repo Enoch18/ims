@@ -19,4 +19,67 @@
             </x-admin.paper>
         @endforeach
     </div>
+
+    <div class="grid grid-cols-3 gap-3 mt-5">
+        <div>
+            @php 
+                $chartId = "Chart1";
+                $title = "Sales Revenue"; 
+            @endphp
+            <x-admin.chart 
+                :title="$title"
+                :chartData="$salesRevenueChart" 
+                :chartId="$chartId"
+            />
+        </div>
+        
+        <div>
+            @php 
+                $chartId = "Chart3";
+                $title = "Supplier Performance"; 
+            @endphp
+            <x-admin.chart 
+                :title="$title"
+                :chartData="$supplierPerformance" 
+                :chartId="$chartId"
+            />
+        </div>
+
+        <div>
+            @php 
+                $chartId = "Chart4";
+                $title = "Stock Alerts"; 
+            @endphp
+            <x-admin.chart 
+                :title="$title"
+                :chartData="$salesRevenueChart" 
+                :chartId="$chartId"
+            />
+        </div>
+
+        <div>
+            @php 
+                $chartId = "Chart2";
+                $title="Top Selling Products" ;
+            @endphp
+
+            <x-admin.chart 
+                :title="$title"
+                :chartData="$topSellingProducts" 
+                :chartId="$chartId"
+            />
+        </div>
+
+        <div>
+            @php 
+                $chartId = "Chart5";
+                $title = "Inventory Value By Category"; 
+            @endphp
+            <x-admin.chart 
+                :title="$title"
+                :chartData="$inventoryValueByCategory" 
+                :chartId="$chartId"
+            />
+        </div>
+    </div>
 </div>
