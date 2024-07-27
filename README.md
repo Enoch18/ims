@@ -14,7 +14,7 @@ This project is an Inventory Management System built with Laravel and Livewire. 
 ## Requirements
 
 - PHP 8.2 or higher
-- Laravel 10.x
+- Laravel 11.x
 - Composer
 - MySQL or another supported database
 
