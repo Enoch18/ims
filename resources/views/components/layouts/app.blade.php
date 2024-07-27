@@ -23,33 +23,46 @@
     </head>
     
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-white">
+        <div class="min-h-screen main-theme">
             <main>
                 <div class="flex flex-row">
-                    <div class="bg-gray-700 w-64 h-[100dvh] p-2">
-                        @php 
-                            $links = [
-                                ['link' => 'Dashboard', 'endpoint' => route('dashboard'), 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Product Management', 'endpoint' => route('products.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Inventory Tracking', 'endpoint' => route('inventory.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Order Management', 'endpoint' => route('order-management.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Suppliers', 'endpoint' => route('suppliers.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Warehouses', 'endpoint' => route('warehouses.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Reports', 'endpoint' => route('reports.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'User Management', 'endpoint' => route('user-managements.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Settings', 'endpoint' => '/settings', 'icon' => "<i class='fa fa-dashboard'></i>"],
-                            ]
-                        @endphp
+                    @php 
+                        $links = [
+                            ['link' => 'Dashboard', 'endpoint' => route('dashboard'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                            ['link' => 'Product Management', 'endpoint' => route('products.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                            ['link' => 'Inventory Tracking', 'endpoint' => route('inventory.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                            ['link' => 'Order Management', 'endpoint' => route('order-management.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                            ['link' => 'Suppliers', 'endpoint' => route('suppliers.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                            ['link' => 'Warehouses', 'endpoint' => route('warehouses.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                            ['link' => 'Reports', 'endpoint' => route('reports.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                            ['link' => 'User Management', 'endpoint' => route('user-managements.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                            ['link' => 'Settings', 'endpoint' => '/settings', 'icon' => "<i class='fa fa-dashboard'></i>"],
+                        ]
+                    @endphp
 
+                    <div class="bg-gray-700 w-64 h-[100vh] p-2 relative hidden md:block lg:block xl:block">
                         @foreach($links as $link)
                             <x-admin.sidebar-link :link="$link" />
                         @endforeach
+
+
+                        {{-- Logout form --}}
+                        <form class="absolute bottom-5 w-[100%]" method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+                            <button class="p-2 w-[93%] text-white border border-gray-500 rounded flex flex-row items-center gap-2 mt-3">
+                                <i class="fa fa-sign-out text-xl"></i> Logout
+                            </button>
+                        </form>
                     </div>
                     
-                    <div class="ml-2 h-[100dvh] w-[100%] pr-2 pl-2 overflow-y-scroll">
-                        @livewire('navigation-menu')
+                    <div class="h-[100dvh] w-[100%] overflow-y-scroll ab">
+                        <x-admin.navigation-bar 
+                            :links="$links"
+                        />
                         
-                        {{ $slot }}
+                        <div class="p-3">
+                            {{ $slot }}
+                        </div>
                     </div>
                 </div>
             </main>

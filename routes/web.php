@@ -7,6 +7,7 @@ use App\Livewire\Dashboards\Dashboard;
 
 use App\Livewire\Products\ListProducts;
 use App\Livewire\Products\ShowProduct;
+use App\Livewire\Products\AddProduct;
 
 use App\Livewire\Inventories\Inventory;
 use App\Livewire\Inventories\InventoryShow;
@@ -29,6 +30,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::get('/product-management', ListProducts::class)->name('products.list');
     Route::get('/product-management/{id}', ShowProduct::class)->name('products.show');
+    Route::get('/product-management/add', AddProduct::class)->name('products.add');
 
     Route::get('/inventories', Inventory::class)->name('inventory.list');
     Route::get('/inventories/{id}', InventoryShow::class)->name('inventory.show');

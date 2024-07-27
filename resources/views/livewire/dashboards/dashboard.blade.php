@@ -1,7 +1,7 @@
 <div class="mt-5">
     <h4 class="text-xl">Dashboard</h4>
 
-    <div class="grid grid-cols-4 gap-4 mt-2">
+    <div class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-2">
         @php 
             $dashboard_top_values = [
                 ['title' => 'Sales Revenue', 'item_value' => 500, 'percentage' => 2.5, 'border_left_color' => 'purple-400'],
@@ -20,7 +20,7 @@
         @endforeach
     </div>
 
-    <div class="grid grid-cols-3 gap-3 mt-5">
+    <div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
         <div>
             @php 
                 $chartId = "Chart1";

@@ -5,3 +5,12 @@
 [x-cloak] {
     display: none;
 }
+
+.theme-btn-bg{
+    background-color: rgb(196, 52, 0);
+}
+
+.main-theme{
+    background-color: white;
+    color: black;
+}
