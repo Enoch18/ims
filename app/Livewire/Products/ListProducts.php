@@ -11,7 +11,7 @@ class ListProducts extends Component
     public function render()
     {
         return view('livewire.products.list-products', [
-            'products' => Product::paginate(15)
+            'products' => Product::orderBy('created_at', 'DESC')->paginate(15)
         ]);
     }
 }

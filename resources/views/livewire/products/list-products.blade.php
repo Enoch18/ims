@@ -1,7 +1,7 @@
 <div class="h-[95vh]">
     <h1 class="text-xl">Our Products</h1>
 
-    <div class="flex flex-row mt-3">
+    <div class="flex flex-row flex-wrap mt-3">
         <div class="flex flex-row flex-1">
             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                 <label for="table-search" class="sr-only">Search</label>
@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="flex flex-row items-center gap-5">
+        <div class="flex flex-row items-center flex-wrap gap-5">
             <button class="pl-5 pr-5 pb-2 pt-2 border border-gray-400 rounded bg-white flex flex-row gap-2 items-center">
                 <i class="fa fa-download"></i> Import
             </button>
@@ -88,9 +88,13 @@
                             {{$product->status}}
                         </td>
 
-                        <td class="px-6 py-4">
-                            <a href="{{route('products.show', $product->id)}}" class="font-medium text-blue-600 light:text-blue-500 hover:underline">
+                        <td class="px-6 py-4 flex flex-row items-center gap-5">
+                            <a href="{{route('products.show', $product->id)}}" class="font-medium text-green-600 light:text-blue-500 hover:underline">
                                 <i class="fa fa-eye text-xl"></i>
+                            </a>
+
+                            <a href="{{route('products.edit', $product->id)}}" class="font-medium text-blue-600 light:text-blue-500 hover:underline">
+                                <i class="fa fa-edit text-xl"></i>
                             </a>
                         </td>
                     </tr>
@@ -100,6 +104,6 @@
     </div>
 
     <div class="mt-5 mb-5">
-        {{$products->links()}}
+        <x-admin.pagination :items="$products" />
     </div>
 </div>

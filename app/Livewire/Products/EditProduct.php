@@ -10,8 +10,9 @@ use App\Models\Category;
 
 use App\Models\Supplier;
 
-class AddProduct extends Component
+class EditProduct extends Component
 {
+    public $product_id;
     public $name;
     public $description;
     public $price;
@@ -25,18 +26,34 @@ class AddProduct extends Component
     public $supplier_id;
     public $category_id;
 
-    // SKU should be system generated.
+    public function mount($id){
+        $product = Product::findOrFail($id);
+        $this->name = $product->name;
+        $this->description = $product->description;
+        $this->price = $product->price;
+        $this->cost = $product->cost;
+        $this->quantity = $product->quantity;
+        $this->reorder_level = $product->reorder_level;
+        $this->manufacturer = $product->manufacturer;
+        $this->barcode = $product->barcode;
+        $this->image = $product->image_url;
+        $this->status = $product->status;
+        $this->supplier_id = $product->supplier_id;
+        $this->category_id = $product->category_id;
+
+        $this->product_id = $product->id;
+    }
 
     public function render()
     {
-        return view('livewire.products.add-product', [
+        return view('livewire.products.edit-product', [
             'categories' => Category::all(),
             'suppliers' => Supplier::all()
         ]);
     }
 
     /**
-     * Saving the product
+     * Updating the product
      */
     public function submitProduct(){
         $this->validate([
@@ -54,9 +71,8 @@ class AddProduct extends Component
         ]);
 
         try{
-            $product = new Product;
+            $product = Product::findOrFail($this->product_id);
             $product->name = $this->name;
-            $product->sku = $this->generateSKU($this->category_id, $this->name);
             $product->description = $this->description;
             $product->price = $this->price;
             $product->cost = $this->cost;
@@ -77,17 +93,5 @@ class AddProduct extends Component
         }catch(\Exception $e){
             session()->flash('error', 'An error occurred! ' . $e->getMessage());
         }
-    }
-
-    /**
-     * Generating the SKU for the product
-     * 
-     * @return Sku
-     */
-    private function generateSKU($category_id, $name){
-        $category = Category::find($category_id)->first()?->name;
-
-        $timestamp = now()->timestamp;
-        return strtoupper(substr($category, 0, 3)) . '-' . strtoupper(substr($name, 0, 3)) . '-' . $timestamp;
     }
 }
