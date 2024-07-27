@@ -34,7 +34,7 @@
                                 ['link' => 'Inventory Tracking', 'endpoint' => route('inventory.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
                                 ['link' => 'Order Management', 'endpoint' => route('order-management.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
                                 ['link' => 'Suppliers', 'endpoint' => route('suppliers.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
-                                ['link' => 'Locations', 'endpoint' => route('locations.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
+                                ['link' => 'Warehouses', 'endpoint' => route('warehouses.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
                                 ['link' => 'Reports', 'endpoint' => route('reports.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
                                 ['link' => 'User Management', 'endpoint' => route('user-managements.list'), 'icon' => "<i class='fa fa-dashboard'></i>"],
                                 ['link' => 'Settings', 'endpoint' => '/settings', 'icon' => "<i class='fa fa-dashboard'></i>"],

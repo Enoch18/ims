@@ -1,5 +1,5 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
-    <h1 class="text-xl mb-4">Our Products</h1>
+    <h1 class="text-xl mb-4">Inventory List</h1>
      
     <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
         <label for="table-search" class="sr-only">Search</label>
@@ -25,10 +25,22 @@
                     Product name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    Location
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Price
+                    Warehouse
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Quantity
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Batch/Lot #
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Last Restocked
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Last Sold
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Status
@@ -40,7 +52,7 @@
         </thead>
         
         <tbody>
-            @foreach($products as $product)
+            @foreach($inventories as $inventory)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="w-4 p-4">
                         <div class="flex items-center">
@@ -50,23 +62,39 @@
                     </td>
 
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{$product->name}}
+                        {{$inventory->product->name}}
+                    </th>
+
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$inventory->location->code}}
+                    </th>
+
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$inventory->warehouse->name}}
+                    </th>
+
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$inventory->quantity}}
+                    </th>
+
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$inventory->batch_lot_number}}
+                    </th>
+
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$inventory->last_restocked}}
+                    </th>
+
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$inventory->last_sold}}
+                    </th>
+
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white capitalize">
+                        {{$inventory->status}}
                     </th>
 
                     <td class="px-6 py-4">
-                        {{$product->category->name}}
-                    </td>
-
-                    <td class="px-6 py-4">
-                        {{$product->price}}
-                    </td>
-
-                    <td class="px-6 py-4 capitalize">
-                        {{$product->status}}
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="{{route('products.show', $product->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                        <a href="{{route('inventory.show', $inventory->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             <i class="fa fa-eye text-xl"></i>
                         </a>
                     </td>
@@ -76,6 +104,6 @@
     </table>
     
     <div class="mt-5 mb-5">
-        {{$products->links()}}
+        {{$inventories->links()}}
     </div>
 </div>

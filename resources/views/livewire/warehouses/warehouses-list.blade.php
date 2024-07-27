@@ -1,5 +1,5 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
-    <h1 class="text-xl mb-4">Our Products</h1>
+    <h1 class="text-xl mb-4">Warehouses</h1>
      
     <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
         <label for="table-search" class="sr-only">Search</label>
@@ -22,16 +22,28 @@
                 </th>
 
                 <th scope="col" class="px-6 py-3">
-                    Product name
+                    Warehouse ID
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    Name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Price
+                    Country
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Status
+                    City
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Manager
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Phone Number
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Capacity
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
@@ -40,7 +52,7 @@
         </thead>
         
         <tbody>
-            @foreach($products as $product)
+            @foreach($warehouses as $warehouse)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="w-4 p-4">
                         <div class="flex items-center">
@@ -50,23 +62,32 @@
                     </td>
 
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{$product->name}}
+                        {{$warehouse->id}}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$warehouse->name}}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$warehouse->country}}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$warehouse->city}}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$warehouse->manager_name}}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$warehouse->phone_number}}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$warehouse->email}}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$warehouse->capacity}}
                     </th>
 
                     <td class="px-6 py-4">
-                        {{$product->category->name}}
-                    </td>
-
-                    <td class="px-6 py-4">
-                        {{$product->price}}
-                    </td>
-
-                    <td class="px-6 py-4 capitalize">
-                        {{$product->status}}
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="{{route('products.show', $product->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                        <a href="{{route('products.show', $warehouse->id)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             <i class="fa fa-eye text-xl"></i>
                         </a>
                     </td>
@@ -76,6 +97,6 @@
     </table>
     
     <div class="mt-5 mb-5">
-        {{$products->links()}}
+        {{$warehouses->links()}}
     </div>
 </div>

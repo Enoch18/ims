@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('sku');
-            $table->double('price');
-            $table->double('cost')->nullable();
+            $table->decimal('price', 10, 2);
+            $table->decimal('cost', 10, 2)->nullable();
             $table->integer('quantity');
             $table->integer('reorder_level');
             $table->string('manufacturer');
