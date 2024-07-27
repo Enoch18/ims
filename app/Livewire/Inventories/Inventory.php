@@ -11,7 +11,7 @@ class Inventory extends Component
     public function render()
     {
         return view('livewire.inventories.inventory', [
-            'inventories' => InventoryList::paginate(15)
+            'inventories' => InventoryList::orderBy('created_at', 'desc')->paginate(15)
         ]);
     }
 }

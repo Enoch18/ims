@@ -12,6 +12,8 @@ use App\Livewire\Products\EditProduct;
 
 use App\Livewire\Inventories\Inventory;
 use App\Livewire\Inventories\InventoryShow;
+use App\Livewire\Inventories\AddInventory;
+use App\Livewire\Inventories\EditInventory;
 
 use App\Livewire\OrderManagements\OrderManagementList;
 use App\Livewire\OrderManagements\OrderManagementShow;
@@ -35,7 +37,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/product-management/{id}/edit', EditProduct::class)->name('products.edit');
 
     Route::get('/inventories', Inventory::class)->name('inventory.list');
+    Route::get('/inventories/add', AddInventory::class)->name('inventory.add');
     Route::get('/inventories/{id}', InventoryShow::class)->name('inventory.show');
+    Route::get('/inventories/{id}/edit', EditInventory::class)->name('inventory.edit');
 
     Route::get('/order-management', OrderManagementList::class)->name('order-management.list');
     Route::get('/order-management/{id}', OrderManagementShow::class)->name('order-management.show');

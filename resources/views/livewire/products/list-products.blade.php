@@ -1,4 +1,4 @@
-<div class="h-[95vh]">
+<div>
     <h1 class="text-xl">Our Products</h1>
 
     <div class="flex flex-row flex-wrap mt-3">
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="relative h-[75vh] overflow-x-auto overflow-y-scroll shadow-md sm:rounded-lg mt-3">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 light:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400">
                 <tr>

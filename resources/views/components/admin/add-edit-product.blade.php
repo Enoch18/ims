@@ -28,20 +28,17 @@
 
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Product Name</label>
-                    <input type="text" id="name" wire:model="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500" placeholder="Enter Product Name" />
+                    <x-inputs.input-field :id="'name'" :type="'text'" :label="'Product Name'" />
                     @error('name') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
 
                 <div>
-                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Price</label>
-                    <input type="number" id="price" wire:model="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500" placeholder="Enter Product Price" />
+                    <x-inputs.input-field :id="'price'" :type="'number'" :label="'Price'" />
                     @error('price') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
 
                 <div>
-                    <label for="cost" class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Cost</label>
-                    <input type="number" id="cost" wire:model="cost" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500" placeholder="Enter Product Cost" />
+                    <x-inputs.input-field :id="'cost'" :type="'number'" :label="'Cost'" />
                     @error('cost') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
 
