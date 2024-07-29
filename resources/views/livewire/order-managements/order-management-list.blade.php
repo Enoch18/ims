@@ -1,4 +1,4 @@
-<div>
+<div class="mt-2">
     <x-admin.list-heading-and-actions :heading="'Order List'" :add_route="'order-management.add'" />
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
@@ -104,9 +104,11 @@
                 @endforeach
             </tbody>
         </table>
-        
-        <div class="mt-5 mb-5">
-            {{$orders->links()}}
-        </div>
+
+        <x-no-item-found :items="$orders" />
+    </div>
+
+    <div class="mt-5 mb-5">
+        {{$orders->links()}}
     </div>
 </div>

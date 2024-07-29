@@ -1,6 +1,6 @@
 
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-2">
     <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 p-4 bg-white light:bg-gray-900">
         <div>
             <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 light:bg-gray-800 light:text-gray-400 light:border-gray-600 light:hover:bg-gray-700 light:hover:border-gray-600 light:focus:ring-gray-700" type="button">
@@ -93,4 +93,6 @@
             @endforeach
         </tbody>
     </table>
+
+    <x-no-item-found :items="$users" />
 </div>

@@ -1,4 +1,4 @@
-<div>
+<div class="mt-2">
     <x-admin.list-heading-and-actions :heading="'Our Products'" :add_route="'products.add'" />
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3">
@@ -69,6 +69,8 @@
                 @endforeach
             </tbody>
         </table>
+
+        <x-no-item-found :items="$products" />
     </div>
 
     <div class="mt-5 mb-5">

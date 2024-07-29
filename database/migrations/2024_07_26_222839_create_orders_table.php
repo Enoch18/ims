@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('order_number')->unique();
             $table->foreignId('customer_id')->nullable()->constrained('customers')->references('id')->onDelete('set null')->cascadeOnUpdate();
-            $table->enum('status', ['Pending', 'Processing', 'Shipped', 'Delivered', 'Canceled']);
+            $table->enum('status', ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']);
             $table->decimal('total_amount', 10, 2);
             $table->text('shipping_address')->nullable();
             $table->text('billing_address')->nullable();

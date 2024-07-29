@@ -1,4 +1,4 @@
-<div>
+<div class="mt-2">
     
     <x-admin.list-heading-and-actions :heading="'Inventory List'" :add_route="'inventory.add'" />
 
@@ -98,6 +98,8 @@
                 @endforeach
             </tbody>
         </table>
+
+        <x-no-item-found :items="$inventories" />
     </div>
 
     <div class="mt-5 mb-5">

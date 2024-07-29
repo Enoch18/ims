@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 return new class extends Migration
 {
@@ -38,6 +40,13 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        $user = new User;
+        $user->first_name = 'Test';
+        $user->last_name = 'Admin';
+        $user->email = 'admin@test.com';
+        $user->password = Hash::make('admin');
+        $user->save();
     }
 
     /**
