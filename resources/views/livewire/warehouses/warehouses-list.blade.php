@@ -1,4 +1,6 @@
 <div class="mt-2">
+    <x-admin.list-heading-and-actions :heading="'Warehouses'" :add_route="'warehouses.add'" />
+
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 light:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400">

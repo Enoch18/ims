@@ -22,12 +22,21 @@ use App\Livewire\OrderManagements\EditOrder;
 
 use App\Livewire\Suppliers\SuppliersList;
 use App\Livewire\Suppliers\SupplierShow;
+use App\Livewire\Suppliers\AddSupplier;
+use App\Livewire\Suppliers\EditSupplier;
 
 use App\Livewire\Warehouses\WarehousesList;
 use App\Livewire\Warehouses\WarehouseShow;
+use App\Livewire\Warehouses\AddWarehouse;
+use App\Livewire\Warehouses\EditWarehouse;
 
 use App\Livewire\Reports\ReportsList;
+
 use App\Livewire\UserManagements\UserManagementList;
+use App\Livewire\UserManagements\AddUser;
+use App\Livewire\UserManagements\EditUser;
+use App\Livewire\UserManagements\ShowUser;
+
 use App\Livewire\Settings\Settings;
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
@@ -49,14 +58,21 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/order-management/{id}/edit', EditOrder::class)->name('order-management.edit');
 
     Route::get('/suppliers', SuppliersList::class)->name('suppliers.list');
+    Route::get('/suppliers/add', AddSupplier::class)->name('suppliers.add');
     Route::get('/suppliers/{id}', SupplierShow::class)->name('suppliers.show');
+    Route::get('/suppliers/{id}/edit', EditSupplier::class)->name('suppliers.edit');
 
     Route::get('/warehouses', WarehousesList::class)->name('warehouses.list');
+    Route::get('/warehouses/add', AddWarehouse::class)->name('warehouses.add');
     Route::get('/warehouses/{id}', WarehousesList::class)->name('warehouses.show');
+    Route::get('/warehouses/{id}/edit', EditWarehouse::class)->name('warehouses.edit');
 
     Route::get('/reports', ReportsList::class)->name('reports.list');
 
     Route::get('/user-managements', UserManagementList::class)->name('user-managements.list');
+    Route::get('/user-managements/add', AddUser::class)->name('user-managements.add');
+    Route::get('/user-managements/{id}', ShowUser::class)->name('user-managements.show');
+    Route::get('/user-managements/{id}/edit', EditUser::class)->name('user-managements.edit');
 
     Route::get('/settings', Settings::class)->name('settings.list');
 });
