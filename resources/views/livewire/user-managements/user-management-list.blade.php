@@ -64,4 +64,8 @@
 
         <x-no-item-found :items="$users" />
     </div>
+
+    <div class="mt-4">
+        <x-admin.pagination :items="$users" />
+    </div>
 </div>
