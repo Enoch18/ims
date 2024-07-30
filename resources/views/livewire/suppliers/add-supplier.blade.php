@@ -1,3 +1,3 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
+    <x-admin.add-edit-supplier />
 </div>
