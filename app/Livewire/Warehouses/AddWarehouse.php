@@ -36,8 +36,8 @@ class AddWarehouse extends Component
             'phone_number' => 'required|string',
             'email' => 'required|string',
             'manager_name' => 'required|string',
-            'capacity' => 'required|string',
-            'current_usage' => 'required|string'
+            'capacity' => 'required|integer',
+            'current_usage' => 'required|integer'
         ]);
 
         try{
@@ -49,6 +49,7 @@ class AddWarehouse extends Component
             $warehouse->postal_code = $this->postal_code;
             $warehouse->country = $this->country;
             $warehouse->phone_number = $this->phone_number;
+            $warehouse->email = $this->email;
             $warehouse->manager_name = $this->manager_name;
             $warehouse->capacity = $this->capacity;
             $warehouse->current_usage = $this->current_usage;

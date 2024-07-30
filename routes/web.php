@@ -64,7 +64,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::get('/warehouses', WarehousesList::class)->name('warehouses.list');
     Route::get('/warehouses/add', AddWarehouse::class)->name('warehouses.add');
-    Route::get('/warehouses/{id}', WarehousesList::class)->name('warehouses.show');
+    Route::get('/warehouses/{id}', WarehouseShow::class)->name('warehouses.show');
     Route::get('/warehouses/{id}/edit', EditWarehouse::class)->name('warehouses.edit');
 
     Route::get('/reports', ReportsList::class)->name('reports.list');

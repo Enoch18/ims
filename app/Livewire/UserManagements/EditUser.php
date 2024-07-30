@@ -8,20 +8,35 @@ use App\Models\User;
 
 use App\Models\Role;
 
+use Illuminate\Support\Facades\Hash;
+
 class EditUser extends Component
 {
     public $first_name;
     public $last_name;
     public $email;
     public $password;
+    public $confirm_password;
     public $role_id;
+
+    public function mount($id){
+        $user = User::find($id);
+
+        $this->first_name = $user->first_name;
+        $this->last_name = $user->last_name;
+        $this->email = $user->email;
+
+        $this->user_id = $id;
+    }
 
     public function render()
     {
-        return view('livewire.user-managements.edit-user');
+        return view('livewire.user-managements.edit-user', [
+            'roles' => Role::all()
+        ]);
     }
 
-    public function addUser(){
+    public function submitUser(){
         $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -32,11 +47,11 @@ class EditUser extends Component
 
         try{
             // Saving the user to database
-            $user = new User;
+            $user = User::find($this->user_id);
             $user->first_name = $this->first_name;
             $user->last_name = $this->last_name;
             $user->email = $this->email;
-            $user->password = $this->password;
+            $user->password = Hash::make($this->password);
             $user->save();
 
             // Checking if the user has been saved
@@ -57,7 +72,7 @@ class EditUser extends Component
             session()->flash('message', 'Form updated successfully.');
             
             // Redirect to products page
-            return redirect(route('warehouses.list'));
+            return redirect(route('user-managements.list'));
         }catch(\Exception $e){
             session()->flash('error', 'An error occurred! ' . $e->getMessage());
         }

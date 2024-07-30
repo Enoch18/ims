@@ -38,6 +38,8 @@ class EditSupplier extends Component
         $this->payment_terms = $supplier->payment_terms;
         $this->currency = $supplier->currency;
         $this->status = $supplier->status;
+
+        $this->supplier_id = $id;
     }
 
     public function render()
@@ -45,7 +47,7 @@ class EditSupplier extends Component
         return view('livewire.suppliers.edit-supplier');
     }
 
-    public function addSupplier(){
+    public function submitSupplier(){
         $this->validate([
             'name' => 'required|string',
             'contact_person' => 'nullable|sometimes|string',
@@ -63,7 +65,7 @@ class EditSupplier extends Component
         ]);
 
         try{
-            $supplier = Supplier;
+            $supplier = Supplier::findOrFail($this->supplier_id);
             $supplier->name = $this->name;
             $supplier->contact_person = $this->contact_person;
             $supplier->email = $this->email;

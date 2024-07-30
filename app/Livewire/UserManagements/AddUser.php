@@ -8,20 +8,25 @@ use App\Models\User;
 
 use App\Models\Role;
 
+use Illuminate\Support\Facades\Hash;
+
 class AddUser extends Component
 {
     public $first_name;
     public $last_name;
     public $email;
     public $password;
+    public $confirm_password;
     public $role_id;
 
     public function render()
     {
-        return view('livewire.user-managements.add-user');
+        return view('livewire.user-managements.add-user', [
+            'roles' => Role::all()
+        ]);
     }
 
-    public function addUser(){
+    public function submitUser(){
         $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -36,7 +41,7 @@ class AddUser extends Component
             $user->first_name = $this->first_name;
             $user->last_name = $this->last_name;
             $user->email = $this->email;
-            $user->password = $this->password;
+            $user->password = Hash::make($this->password);
             $user->save();
 
             // Checking if the user has been saved
@@ -53,7 +58,7 @@ class AddUser extends Component
             session()->flash('message', 'Form submitted successfully.');
             
             // Redirect to products page
-            return redirect(route('warehouses.list'));
+            return redirect(route('user-managements.list'));
         }catch(\Exception $e){
             session()->flash('error', 'An error occurred! ' . $e->getMessage());
         }

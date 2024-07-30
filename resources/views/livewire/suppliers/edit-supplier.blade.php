@@ -1,3 +1,5 @@
 <div>
-    {{-- The best athlete wants his opponent at his best. --}}
+    <h4 class="text-xl">Edit Supplier</h4>
+
+    <x-admin.add-edit-supplier />
 </div>

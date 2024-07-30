@@ -83,9 +83,13 @@
                             {{$supplier->status}}
                         </th>
 
-                        <td class="px-6 py-4">
-                            <a href="{{route('suppliers.show', $supplier->id)}}" class="font-medium text-blue-600 light:text-blue-500 hover:underline">
+                        <td class="px-6 py-4 flex flex-row items-center gap-5">
+                            <a href="{{route('suppliers.show', $supplier->id)}}" class="font-medium text-green-600 light:text-blue-500 hover:underline">
                                 <i class="fa fa-eye text-xl"></i>
+                            </a>
+
+                            <a href="{{route('suppliers.edit', $supplier->id)}}" class="font-medium text-blue-600 light:text-blue-500 hover:underline">
+                                <i class="fa fa-edit text-xl"></i>
                             </a>
                         </td>
                     </tr>

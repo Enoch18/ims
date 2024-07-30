@@ -149,7 +149,7 @@
 
                                 @if($products_count > 1)
                                     <td class="w-4 p-4">
-                                        <button wire:click="decreaseProductCount" class="mt-2 bg-red-700 text-white w-8 h-8 rounded-full shadow"><i class="fa fa-close"></i></button>
+                                        <button type="button" wire:click="decreaseProductCount" class="mt-2 bg-red-700 text-white w-8 h-8 rounded-full shadow"><i class="fa fa-close"></i></button>
                                     </td>
                                 @endif
                             </tr>
@@ -158,7 +158,7 @@
                 </table>
 
                 <div class="flex flex-row justify-end">
-                    <button wire:click="increaseProductCount" class="mt-2 bg-green-700 text-white w-11 h-11 rounded-full shadow"><i class="fa fa-plus text-2xl"></i></button>
+                    <button type="button" wire:click="increaseProductCount" class="mt-2 bg-green-700 text-white w-11 h-11 rounded-full shadow"><i class="fa fa-plus text-2xl"></i></button>
                 </div>
             </div>
 

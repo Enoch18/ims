@@ -27,7 +27,7 @@ class AddSupplier extends Component
         return view('livewire.suppliers.add-supplier');
     }
 
-    public function addSupplier(){
+    public function submitSupplier(){
         $this->validate([
             'name' => 'required|string',
             'contact_person' => 'nullable|sometimes|string',

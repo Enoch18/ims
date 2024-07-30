@@ -20,8 +20,11 @@ class EditWarehouse extends Component
     public $capacity;
     public $current_usage;
 
+    public $warehouse_id;
+
     public function mount($id){
-        $warehouse = Warehouse::find($id);
+        $warehouse = Warehouse::findOrFail($id);
+
         $this->name = $warehouse->name;
         $this->address = $warehouse->address;
         $this->city = $warehouse->city;
@@ -29,9 +32,12 @@ class EditWarehouse extends Component
         $this->postal_code = $warehouse->postal_code;
         $this->country = $warehouse->country;
         $this->phone_number = $warehouse->phone_number;
+        $this->email = $warehouse->email;
         $this->manager_name = $warehouse->manager_name;
         $this->capacity = $warehouse->capacity;
         $this->current_usage = $warehouse->current_usage;
+
+        $this->warehouse_id = $id;
     }
 
     public function render()
@@ -50,12 +56,12 @@ class EditWarehouse extends Component
             'phone_number' => 'required|string',
             'email' => 'required|string',
             'manager_name' => 'required|string',
-            'capacity' => 'required|string',
-            'current_usage' => 'required|string'
+            'capacity' => 'required|integer',
+            'current_usage' => 'required|integer'
         ]);
 
         try{
-            $warehouse = new Warehouse;
+            $warehouse = Warehouse::findOrFail($this->warehouse_id);
             $warehouse->name = $this->name;
             $warehouse->address = $this->address;
             $warehouse->city = $this->city;
@@ -63,6 +69,7 @@ class EditWarehouse extends Component
             $warehouse->postal_code = $this->postal_code;
             $warehouse->country = $this->country;
             $warehouse->phone_number = $this->phone_number;
+            $warehouse->email = $this->email;
             $warehouse->manager_name = $this->manager_name;
             $warehouse->capacity = $this->capacity;
             $warehouse->current_usage = $this->current_usage;

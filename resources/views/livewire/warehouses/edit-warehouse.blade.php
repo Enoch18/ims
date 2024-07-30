@@ -1,3 +1,5 @@
 <div>
-    {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
+    <h4 class="text-xl">Edit Warehouse</h4>
+
+    <x-admin.add-edit-warehouse />
 </div>
