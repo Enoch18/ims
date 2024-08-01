@@ -1,19 +1,30 @@
-@props(['categories', 'suppliers'])
+@props(['categories', 'suppliers', 'image', 'current_image'])
 
-<div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-12 mt-3 gap-5">
-    {{-- Product image grid --}}
-    <div class="col-span-3 min-h-7 shadow rounded p-3">
-        <h4 class="text-lg">Product Photo</h4><hr />
+{{-- Form for the product that is being added --}}
+<form class="mt-2" wire:submit.prevent="submitProduct">
+    <div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-12 mt-3 gap-5">
+        {{-- Product image grid --}}
+        <div class="col-span-3 min-h-7 shadow rounded p-3">
+            <h4 class="text-lg">Product Photo</h4><hr />
+            
+            <label for="image">
+                <div class="relative cursor-pointer">
+                    <img id="preview" src="{{ $image?->temporaryUrl() ?? $current_image ?? '/images/no_product.png' }}" alt="No Product" class="w-[100%] rounded" />
 
-        <img src="/images/no_product.png" alt="No Product" class="w-[100%]" />
-    </div>
+                    <div class="absolute left-0 right-0 top-0 bottom-0 bg-[rgba(0,0,0,0.5)] hover:bg-[rgba(0,0,0,0.6)] rounded flex flex-row justify-center items-center">
+                        <div class="m-5 text-center">
+                            <p class="text-xl text-white">Click to add/change photo</p>
+                            <i class="fa fa-camera text-3xl text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </label>
+            <input type="file" id="image" wire:model="image" accept="image/*" onchange="previewImage(event)" class="hidden" />
+        </div>
 
-    {{-- Product details grid --}}
-    <div class="col-span-9 min-h-7 shadow rounded p-3">
-        <h4 class="text-lg">Product Details</h4><hr />
-
-        {{-- Form for the product that is being added --}}
-        <form class="mt-2" wire:submit.prevent="submitProduct">
+        {{-- Product details grid --}}
+        <div class="col-span-9 min-h-7 shadow rounded p-3">
+            <h4 class="text-lg">Product Details</h4><hr />        
             @if (session()->has('message'))
                 <div class="mt-4 p-2 bg-green-600 rounded mb-5 text-white">
                     {{ session('message') }}
@@ -113,6 +124,19 @@
                     <i class="fa fa-save text-lg"></i> Save
                 </button>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>
+
+<script>
+    function previewImage(event){
+        const input = event.target;
+        const reader = new FileReader();
+        reader.onload = function() {
+            const preview = document.getElementById('preview');
+            preview.src = reader.result;
+        };
+        console.log(input.files[0])
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>

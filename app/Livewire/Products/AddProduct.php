@@ -10,8 +10,12 @@ use App\Models\Category;
 
 use App\Models\Supplier;
 
+use Livewire\WithFileUploads;
+
 class AddProduct extends Component
 {
+    use WithFileUploads;
+
     public $name;
     public $description;
     public $price;
@@ -21,6 +25,7 @@ class AddProduct extends Component
     public $manufacturer;
     public $barcode;
     public $image;
+    public $current_image;
     public $status;
     public $supplier_id;
     public $category_id;
@@ -64,11 +69,14 @@ class AddProduct extends Component
             $product->reorder_level = $this->reorder_level;
             $product->manufacturer = $this->manufacturer;
             $product->barcode = $this->barcode;
-            $product->image_url = 'no image';
+            $product->image_url = $this->saveImage() ?? "/images/no_product.png";
             $product->status = $this->status;
             $product->supplier_id = $this->supplier_id;
             $product->category_id = $this->category_id;
             $product->save();
+
+            // Resetting the image after saving.
+            $this->image = null;
 
             session()->flash('message', 'Form submitted successfully.');
 
@@ -89,5 +97,17 @@ class AddProduct extends Component
 
         $timestamp = now()->timestamp;
         return strtoupper(substr($category, 0, 3)) . '-' . strtoupper(substr($name, 0, 3)) . '-' . $timestamp;
+    }
+
+    private function saveImage(){
+        // Create a new file name with timestamp
+        $timestamp = now()->timestamp;
+        $extension = $this->image->getClientOriginalExtension();
+        $fileName = $timestamp . '.' . $extension;
+
+        // Save the image to a directory with the new file name
+        $path = $this->image->storeAs('images', $fileName, 'public');
+
+        return $path;
     }
 }

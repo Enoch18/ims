@@ -10,8 +10,12 @@ use App\Models\Category;
 
 use App\Models\Supplier;
 
+use Livewire\WithFileUploads;
+
 class EditProduct extends Component
 {
+    use WithFileUploads;
+
     public $product_id;
     public $name;
     public $description;
@@ -22,6 +26,7 @@ class EditProduct extends Component
     public $manufacturer;
     public $barcode;
     public $image;
+    public $current_image;
     public $status;
     public $supplier_id;
     public $category_id;
@@ -36,7 +41,7 @@ class EditProduct extends Component
         $this->reorder_level = $product->reorder_level;
         $this->manufacturer = $product->manufacturer;
         $this->barcode = $product->barcode;
-        $this->image = $product->image_url;
+        $this->current_image = str_contains($product->image_url, '.') ? "/storage/$product->image_url" : '/images/no_product.png';
         $this->status = $product->status;
         $this->supplier_id = $product->supplier_id;
         $this->category_id = $product->category_id;
@@ -80,7 +85,7 @@ class EditProduct extends Component
             $product->reorder_level = $this->reorder_level;
             $product->manufacturer = $this->manufacturer;
             $product->barcode = $this->barcode;
-            $product->image_url = 'no image';
+            $product->image_url = $this->saveImage() ?? $product->image_url;
             $product->status = $this->status;
             $product->supplier_id = $this->supplier_id;
             $product->category_id = $this->category_id;
@@ -92,6 +97,22 @@ class EditProduct extends Component
             return redirect(route('products.list'));
         }catch(\Exception $e){
             session()->flash('error', 'An error occurred! ' . $e->getMessage());
+        }
+    }
+
+    private function saveImage(){
+        if($this->image){
+            // Create a new file name with timestamp
+            $timestamp = now()->timestamp;
+            $extension = $this->image->getClientOriginalExtension();
+            $fileName = $timestamp . '.' . $extension;
+
+            // Save the image to a directory with the new file name
+            $path = $this->image->storeAs('images', $fileName, 'public');
+
+            return $path;
+        }else{
+            return null;
         }
     }
 }

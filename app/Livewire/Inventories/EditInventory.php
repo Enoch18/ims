@@ -60,7 +60,7 @@ class EditInventory extends Component
     public function render()
     {
         return view('livewire.inventories.edit-inventory', [
-            'products' => Product::orderBy('created_at', 'desc')->limit(20)->get(),
+            'products' => Product::orderBy('created_at', 'desc')->get(),
             'warehouses' => Warehouse::limit(20)->get(),
             'locations' => Location::limit(20)->get(),
         ]);

@@ -1,14 +1,7 @@
 @props(['products', 'warehouses', 'locations'])
 
 <div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-12 mt-3 gap-5">
-    {{-- Product image grid --}}
-    <div class="col-span-3 min-h-7 shadow rounded p-3">
-        <h4 class="text-lg">Product Photo</h4><hr />
-
-        <img src="/images/no_product.png" alt="No Product" class="w-[100%]" />
-    </div>
-
-    <div class="col-span-9 min-h-7 shadow rounded p-3">
+    <div class="col-span-12 min-h-7 shadow rounded p-3">
         <h4 class="text-lg">Inventory Details</h4><hr />
 
         {{-- Form for the product that is being added --}}
