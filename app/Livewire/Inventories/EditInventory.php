@@ -12,6 +12,8 @@ use App\Models\Location;
 
 use App\Models\Inventory;
 
+use Livewire\Attributes\On;
+
 class EditInventory extends Component
 {
     public $product_id;
@@ -32,6 +34,7 @@ class EditInventory extends Component
     public $tags;
     public $status;
     public $inventory_id;
+    public $defaultValue;
 
     public function mount($id){
         $inventory = Inventory::findOrFail($id);
@@ -55,6 +58,12 @@ class EditInventory extends Component
         $this->status = $inventory->status;
 
         $this->inventory_id = $id;
+        $this->defaultValue = $inventory->product->name;
+    }
+
+    #[On('selectedItemId')]
+    public function selectedProductId($item_id){
+        $this->product_id = $item_id;
     }
 
     public function render()

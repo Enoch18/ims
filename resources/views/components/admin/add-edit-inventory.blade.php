@@ -1,11 +1,11 @@
-@props(['products', 'warehouses', 'locations'])
+@props(['products', 'warehouses', 'locations', 'defaultValue'])
 
 <div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-12 mt-3 gap-5">
     <div class="col-span-12 min-h-7 shadow rounded p-3">
         <h4 class="text-lg">Inventory Details</h4><hr />
 
         {{-- Form for the product that is being added --}}
-        <form class="mt-2" wire:submit.prevent="submitInventory">
+        <form class="mt-4" wire:submit.prevent="submitInventory">
             @if (session()->has('message'))
                 <div class="mt-4 p-2 bg-green-600 rounded mb-5 text-white">
                     {{ session('message') }}
@@ -20,13 +20,7 @@
             
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                    <label for="product_id" class="block mb-2 text-sm font-medium text-gray-900 light:text-white">Product</label>
-                    <select id="product_id" wire:model="product_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 light:bg-gray-700 light:border-gray-600 light:placeholder-gray-400 light:text-white light:focus:ring-blue-500 light:focus:border-blue-500">
-                        <option value="">--Select Product--</option>
-                        @foreach($products as $product)
-                            <option value="{{$product->id}}">{{$product->name}}</option>
-                        @endforeach
-                    </select>
+                    <livewire:autocomplete searchType="Product" label="Product" required="true" :defaultValue="$defaultValue" />
                     @error('product_id') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
 

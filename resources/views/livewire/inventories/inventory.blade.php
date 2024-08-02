@@ -14,19 +14,20 @@
                     </th>
 
                     <th scope="col" class="px-6 py-3">
-                        Product name
+                        Batch/Lot #
                     </th>
+
                     <th scope="col" class="px-6 py-3">
-                        Location
+                        Product name
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Warehouse
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Quantity
+                        Location
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Batch/Lot #
+                        Quantity
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Last Restocked
@@ -54,11 +55,11 @@
                         </td>
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">
-                            {{$inventory->product->name}}
+                            {{$inventory->batch_lot_number}}
                         </th>
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">
-                            {{$inventory->location->code}}
+                            {{$inventory->product->name}}
                         </th>
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">
@@ -66,11 +67,11 @@
                         </th>
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">
-                            {{$inventory->quantity}}
+                            {{$inventory->location->code}}
                         </th>
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">
-                            {{$inventory->batch_lot_number}}
+                            {{$inventory->quantity}}
                         </th>
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">

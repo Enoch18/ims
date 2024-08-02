@@ -5,5 +5,6 @@
         :products="$products"
         :warehouses="$warehouses"
         :locations="$locations"
+        :defaultValue="$defaultValue"
     />
 </div>

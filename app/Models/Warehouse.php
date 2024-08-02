@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Warehouse extends Model
 {
@@ -16,5 +17,9 @@ class Warehouse extends Model
 
     public function inventories() : HasMany {
         return $this->hasMany(Inventory::class, 'warehouse_id');
+    }
+
+    public function location() : HasOne{
+        return $this->hasOne(Location::class, 'warehouse_id');
     }
 }

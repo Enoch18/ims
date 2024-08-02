@@ -12,6 +12,8 @@ use App\Models\Location;
 
 use App\Models\Inventory;
 
+use Livewire\Attributes\On;
+
 class AddInventory extends Component
 {
     public $product_id;
@@ -31,6 +33,11 @@ class AddInventory extends Component
     public $notes;
     public $tags;
     public $status;
+
+    #[On('selectedItemId')]
+    public function selectedProductId($item_id){
+        $this->product_id = $item_id;
+    }
 
     public function render()
     {

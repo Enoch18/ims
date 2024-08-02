@@ -31,12 +31,6 @@
                         Country
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        City
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Website
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -72,12 +66,6 @@
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">
                             {{$supplier->country}}
-                        </th>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">
-                            {{$supplier->city}}
-                        </th>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">
-                            {{$supplier->website}}
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap light:text-white">
                             {{$supplier->status}}
