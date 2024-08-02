@@ -40,7 +40,7 @@ use App\Livewire\UserManagements\ShowUser;
 use App\Livewire\Settings\Settings;
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/', Dashboard::class)->name('dashboard');
+    Route::get('/', Dashboard::class)->name('dashboard'); 
 
     Route::get('/product-management', ListProducts::class)->name('products.list');
     Route::get('/product-management/add', AddProduct::class)->name('products.add');
