@@ -3,7 +3,7 @@
 {{-- Form for the product that is being added --}}
 <form class="mt-2" wire:submit.prevent="submitOrder">
     <div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-12 mt-3 gap-5">
-        <div class="xs:col-span-12 sm:col-span-12 md:col-span-8 min-h-7 shadow rounded p-3">
+        <div class="xs:col-span-12 sm:col-span-12 md:col-span-7 min-h-7 shadow rounded p-3">
             <h4 class="text-lg">Order Details</h4><hr />
             @if (session()->has('message'))
                 <div class="mt-4 p-2 bg-green-600 rounded mb-5 text-white">
@@ -110,7 +110,7 @@
         </div>
 
         {{-- Order items --}}
-        <div class="col-span-4 min-h-7 shadow rounded p-3 relative">
+        <div class="col-span-5 min-h-7 shadow rounded p-3 relative">
             <h4 class="text-lg">Order Products</h4><hr />
 
             {{-- Displaying the products that have been added --}}
