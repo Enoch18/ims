@@ -18,6 +18,7 @@ class EditUser extends Component
     public $password;
     public $confirm_password;
     public $role_id;
+    public $user_id;
 
     public function mount($id){
         $user = User::find($id);
@@ -40,7 +41,7 @@ class EditUser extends Component
         $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|string|unique:users',
+            // 'email' => 'required|string|unique:users',
             'password' => 'required|string|min:8',
             'role_id' => 'required|integer'
         ]);
@@ -60,7 +61,7 @@ class EditUser extends Component
                 $role = Role::findOrFail($this->role_id);
 
                 //  Checking if role doesn't exist and then adding it.
-                $role_user = DB::table('role_user')->where('role_id', '=', $role->id)->where('user_id', '=', $user->id)->first();
+                $role_user = \DB::table('role_user')->where('role_id', '=', $role->id)->where('user_id', '=', $user->id)->first();
                 if(!$role_user){
                     \DB::table('role_user')->insert([
                         'user_id' => $user->id,
