@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Supplier;
 use App\Models\Product;
 use App\Models\Location;
-use App\Models\WareHouse;
+use App\Models\Warehouse;
 use App\Models\Inventory;
 use App\Models\Customer;
 use App\Models\Order;
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         Category::count() == 0 && Category::factory(10)->create();
         Supplier::count() == 0 && Supplier::factory(10)->create();
         Product::count() == 0 && Product::factory(200)->create();
-        WareHouse::count() == 0 && WareHouse::factory(10)->create();
+        Warehouse::count() == 0 && Warehouse::factory(10)->create();
         Location::count() == 0 && Location::factory(100)->create();
         Inventory::count() == 0 && Inventory::factory(200)->create();
         Customer::count() == 0 && Customer::factory(10)->create();
